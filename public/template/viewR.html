@@ -1,0 +1,80 @@
+<div style='width:100%;'>
+    <md-toolbar class="w3-blue">
+        <div class="md-toolbar-tools">
+          <h2 style='color:#fff' class="md-flex">Les Ressources Scientifiques du Laboratoire</h2>
+        </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+            <div layout='row'>
+                <div layout='column' style='width: 20%;'>
+                    <md-input-container style='width:100%'> 
+                        <md-select layout md-flex='100'   placeholder="Reference Type" md-on-close='dash.validateReference()' ng-model="dash.reference" md-on-open="dash.loadReference()"  >
+                                <md-option ng-value="reference.name" ng-repeat="reference in references">{{reference.name}}</md-option>
+                        </md-select>
+                 </md-input-container>  
+                    <md-input-container style='width: 100%;'>   
+                        <md-select layout md-flex='100' placeholder="Research Axe" ng-model="dash.research"  md-on-open="dash.loadResearch()" md-on-close='dash.validateResearch()'>
+                                <md-option ng-value="research.name" ng-repeat="research in researches">{{research.name}}</md-option>
+                        </md-select>
+                    </md-input-container>  
+                     <md-checkbox ng-change="dash.checkLink()" ng-model="dash.rLinks">
+                        Only Links
+                      </md-checkbox>
+                      <md-checkbox ng-change="dash.checkArticle()" ng-model="dash.rArticles">
+                        Only Articles
+                      </md-checkbox>
+                    <div style='margin-top: 10%;' >
+                         <md-button ng-click='dash.back()' class="md-raised md-accent md-hue-2">Add ressource</md-button>
+                    </div>
+                </div>
+                <div style='width: 90%;padding-left: 2%;margin-top: -1%'>
+                    <table id="ressourcesT" class="mdl-data-table"  cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Edition</th>
+                                            <th>author</th>
+                                            <th>Reference</th>
+                                            <th>Research</th>
+                                            <th>link</th>
+                                            <th>article</th>
+                                            <th>article_name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-val='rdata.article' ng-repeat="rdata in rdatas">
+                                            <td>
+                                                {{rdata.title}}
+                                            </td>
+                                            <td>
+                                                {{rdata.edition}}
+                                            </td>
+                                            <td>
+                                                {{rdata.author}}
+                                            </td>
+                                            <td>
+                                                {{rdata.reference}}
+                                            </td>
+                                            <td>
+                                                {{rdata.research}}
+                                            </td>
+                                            <td>
+                                                {{rdata.link}}
+                                            </td>
+                                            <td>
+                                                <md-button ng-click='dash.download(rdata.article)' class="md-fab md-mini w3-blue w3-hover-blue-grey">
+                                                        <md-icon md-svg-src="icons/ic_file_download_white_24px.svg"></md-icon>
+                                                </md-button>
+                                            </td>
+                                            <td>
+                                                {{rdata.article}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                    </table>
+                </div>
+            </div>
+    </md-content>
+  
+</div>
+

@@ -1,0 +1,34 @@
+<link rel='stylesheet' type='text/css' href='css/jquery.dataTables.min.css'/>
+<link rel='stylesheet' type='text/css' href='css/dataTables.material.min.css'/>
+
+<div id="content">
+    <img id="logo" src="img/logo.png">
+    <img id="logo1" src="img/logo1.png" align="right">
+<div>
+
+<md-fab-speed-dial style='align-items: flex-end; margin-right: 2%;' md-direction="down"  class="md-scale">
+    <md-fab-trigger>
+      <md-button style='background-color: #0f9cb3' aria-label="menu" class="md-fab w3-blue md-warn">
+         <md-icon md-svg-src="icons/ic_menu_white_24px.svg" ></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-fab-actions>
+      <md-button ng-click="dash.logout($event)" style='background-color:#1371c1' class="md-fab md-raised md-mini w3-pink">
+         <md-tooltip md-direction="left">Logout</md-tooltip>
+        <md-icon md-svg-src="icons/ic_lock_white_24px.svg" ></md-icon>
+      </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>
+
+<md-dialog id='dialog' style='opacity:1; max-width: 70%; margin-left: 15%;'>
+    <md-dialog-content id='dialogContent' style='overflow: hidden'>
+      <div class="md-dialog-content" ng-include="temp">
+      </div>    
+     </md-dialog-content>
+</md-dialog>
+
+<script src='js/jquery.dataTables.min.js'></script>
+<script src='js/dataTables.material.min.js'></script>
+<script src='node_modules/file-saver/FileSaver.js'></script>
+<script src='js/Blob.js'></script>

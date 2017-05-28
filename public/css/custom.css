@@ -1,0 +1,13 @@
+#cover{ 
+  height:100%;
+  width: 100%;
+  background-image: url("../images/load.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100% ;
+  position: absolute;
+  z-index: 5;
+ }
+md-progress-circular.md-default-theme path, md-progress-circular path {
+    stroke: #004dc1;
+ }
+

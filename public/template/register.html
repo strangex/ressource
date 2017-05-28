@@ -1,0 +1,97 @@
+  <div ng-form='home.register' layout='column' >
+              <div layout='row'>
+                  <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+                            <label>Firstname</label>
+                            <input  md-autofocus class='fields' required ng-minlength='3' ng-maxlength='25' pattern="^[A-Za-z0-9]*$"  name='fname' ng-model="home.fname">
+                            <div class="validation-messages"  ng-messages="home.register.fname.$error">
+                               <div ng-message="required">The Firstname is required!</div>
+                                <div ng-message="minlength">The Firstname must at least involve 8 letters!</div>
+                               <div ng-message="maxlength">The Firstname must have a max of 25 letters!</div>
+                               <div ng-message="pattern">The Firstname must contain only letters and numbers</div>
+                               <div ng-message="server" >{{home.ferr}}</div>
+                            </div>
+                       
+                  </md-input-container>
+                   <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+                            <label>Lastname</label>
+                            <input  md-autofocus class='fields' required ng-minlength='3' ng-maxlength='25' pattern="^[A-Za-z0-9]*$"  name='lname' ng-model="home.lname">
+                            <div class="validation-messages"  ng-messages="home.register.lname.$error">
+                               <div ng-message="required">The Lastname is required!</div>
+                                <div ng-message="minlength">The Lastname must at least involve 8 letters!</div>
+                               <div ng-message="maxlength">The Lastname must have a max of 25 letters!</div>
+                               <div ng-message="pattern">The Lastname must contain only letters and numbers</div>
+                               <div ng-message="server" >{{home.lerr}}</div>
+                            </div>
+                         
+                  </md-input-container>
+          </div>
+                   <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+                            <label>Profession</label>
+                            <input  md-autofocus class='fields' required ng-minlength='8' ng-maxlength='25' pattern="^[A-Za-z0-9]*$"  name='profession' ng-model="home.profession">
+                            <div class="validation-messages"  ng-messages="home.register.profession.$error">
+                               <div ng-message="required">The Profession is required!</div>
+                                <div ng-message="minlength">The Profession must at least involve 8 letters!</div>
+                               <div ng-message="maxlength">The Profession must have a max of 25 letters!</div>
+                               <div ng-message="pattern">The Profession must contain only letters and numbers</div>
+                               <div ng-message="server" >{{home.pfeer}}</div>
+                            </div>
+                         
+                  </md-input-container>
+                  <div layout='row'>
+                       <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+                            <label>Username</label>
+                            <input  md-autofocus class='fields' required ng-minlength='8' ng-maxlength='25' name='username' ng-model="home.username">
+                            <div class="validation-messages"  ng-messages="home.register.username.$error">
+                               <div ng-message="required">The Username is required!</div>
+                                <div ng-message="minlength">The Username must at least involve 8 letters!</div>
+                               <div ng-message="maxlength">The Username must have a max of 25 letters!</div>
+                               <div ng-message="pattern">The Username must contain only letters and numbers</div>
+                               <div ng-message="server" >{{home.userr}}</div>
+                            </div>
+                         </md-input-container>
+                          <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+                            <label>Email</label>
+                            <input  md-autofocus class='fields' required ng-minlength='8' name='email' ng-model="home.email">
+                            <div class="validation-messages"  ng-messages="home.register.email.$error">
+                               <div ng-message="required">The Email is required!</div>
+                                <div ng-message="minlength">The Email must at least involve 8 letters!</div>
+                               <div ng-message="pattern">The Email must contain only letters and numbers</div>
+                               <div ng-message="server" >{{home.emlerr}}</div>
+                            </div>
+                         </md-input-container>
+
+                  </div>
+                  <div layout='row'>
+                          <md-input-container class="md-block" flex-gt-sm>
+                              <label>Password</label>
+                              <input type='password'  pattern="^[A-Za-z'0-9_]*$" class='fields' name='password' required ng-minlength='8' ng-maxlength='30' ng-model="home.password">
+                            <div class="validation-messages"  ng-messages="home.register.password.$error">
+                                 <div ng-message="required">The Password is required!</div>
+                                  <div ng-message="minlength">The Password must at least involve 8 caracters!</div>
+                                 <div ng-message="maxlength">The Password must have a max of 30 caracters!</div>
+                                 <div ng-message="pattern">The Password must contain only Alphanumeric caracters</div>
+                                  <div ng-message="server" >{{home.passerr}}</div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container class="md-block" flex-gt-sm>
+                                <label>Confirm Password</label>
+                                <input type='password'  pattern="^[A-Za-z'0-9_]*$" class='fields' name='check' required ng-minlength='8' ng-maxlength='30' ng-model="home.check">
+                              <div class="validation-messages"  ng-messages="home.register.check.$error">
+                                   <div ng-message="required">The Password is required!</div>
+                                    <div ng-message="minlength">The Password must at least involve 8 caracters!</div>
+                                   <div ng-message="maxlength">The Password must have a max of 30 caracters!</div>
+                                   <div ng-message="pattern">The Password must contain only Alphanumeric caracters</div>
+                                    <div ng-message="server" >{{home.checkerr}}</div>
+                              </div>
+                         </md-input-container>
+                  </div>
+                  
+              
+                
+                  <div>
+                    <md-button  ng-click='home.cancel()' class="w3-pink w3-hover-red">Cancel
+                    </md-button>
+                      <md-button  ng-click='home.validate($event)' class="w3-teal w3-hover-blue">Register
+                    </md-button>
+                  </div>
+</div>

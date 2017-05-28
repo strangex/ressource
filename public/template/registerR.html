@@ -1,0 +1,169 @@
+<div layout='column'>
+	<div ng-form='dash.register' layout='row'>
+		<div id='viewId' layout='column' style='padding-right: 4%;'>
+			<md-button ng-click='dash.viewR()' style='width: 100%; height: 9%;' class="md-raised md-primary">View Ressources</md-button>
+			<div class='importView' style='display:none;'>
+			        <div ng-click='dash.triggerUpload()' style="height:200px; width: 250px; margin-left: 2%; margin-top: 23;" filters=' syncFilter numberFilter sizeFilter' class="well my-drop-zone" nv-file-over="" uploader="uploader">
+			                <span style='text-align: center;'>Drop pdf File Here</span>
+			        </div>           
+			        <input type="file" accept='.pdf' id='uzone' style='display: none' filters='syncFilter numberFilter sizeFilter' nv-file-select=""  uploader="uploader"/>
+   			</div>
+
+		</div>
+		<div id='linkView' style='width:70%' layout='column' >
+			<div class='w3-text-pink' style='padding-top: 2%;padding-bottom: 2%;'>
+				<span style='font-size: 22px'>Ajout de Ressource</span>
+			</div>
+			<div layout='row'>
+	          <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+	                    <label>Title</label>
+	                    <input  md-autofocus class='fields' required ng-minlength='3' ng-maxlength='25' pattern="^[A-Za-z0-9]*$"  name='title' ng-model="dash.title">
+	                    <div class="validation-messages"  ng-messages="dash.register.title.$error">
+	                       <div ng-message="required">The Title is required!</div>
+	                        <div ng-message="minlength">The Title must at least involve 8 letters!</div>
+	                       <div ng-message="maxlength">The Title must have a max of 25 letters!</div>
+	                       <div ng-message="pattern">The Title must contain only letters and numbers</div>
+	                       <div ng-message="server" >{{dash.errTitle}}</div>
+	                    </div>
+	            </md-input-container>
+	           <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+	                    <label>Author</label>
+	                    <input  md-autofocus class='fields' required ng-minlength='3' ng-maxlength='25' pattern="^[A-Za-z0-9]*$"  name='author' ng-model="dash.author">
+	                    <div class="validation-messages"  ng-messages="dash.register.author.$error">
+	                       <div ng-message="required">The Author is required!</div>
+	                        <div ng-message="minlength">The Author must at least involve 8 letters!</div>
+	                       <div ng-message="maxlength">The Author must have a max of 25 letters!</div>
+	                       <div ng-message="pattern">The Author must contain only letters and numbers</div>
+	                       <div ng-message="server" >{{dash.errAuthor}}</div>
+	                    </div>
+	                 
+	          </md-input-container>
+	        </div>
+	        <div layout='row'>
+	        	<md-input-container style='width:100%'>	
+	        		<md-select layout md-flex='100' class='fields' name='reference' placeholder="Reference Type" ng-model="dash.reference" required md-on-open="dash.loadReference()"  >
+							<md-option ng-value="reference.name" ng-repeat="reference in references">{{reference.name}}</md-option>
+					</md-select>
+					<div class="validation-messages"  ng-messages="register.reference.$error">
+						    <div ng-message="required">The Reference is required!</div>
+						    <div ng-message="server" >{{dash.errReference}}</div>
+					</div>
+			     </md-input-container>	
+				<md-input-container style='width: 100%;'>	
+	        		<md-select layout md-flex='100'  class='fields' name='research' placeholder="Research Axe" ng-model="dash.research" required md-on-open="dash.loadResearch()"  >
+							<md-option ng-value="research.name" ng-repeat="research in researches">{{research.name}}</md-option>
+					</md-select>
+					<div class="validation-messages"  ng-messages="register.bacType.$error">
+						    <div ng-message="required">The Research Axe is required!</div>
+						    <div ng-message="server" >{{dash.errResearch}}</div>
+					</div>
+			     </md-input-container>	
+	        </div>
+
+	        <div layout='row'>
+	        		  <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+	                    <label>Edition</label>
+	                    <input  md-autofocus class='fields' required ng-minlength='8' ng-maxlength='25' pattern="^[A-Za-z0-9]*$"  name='edition' ng-model="dash.edition">
+	                    <div class="validation-messages"  ng-messages="dash.register.edition.$error">
+	                       <div ng-message="required">The Profession is required!</div>
+	                        <div ng-message="minlength">The Profession must at least involve 8 letters!</div>
+	                       <div ng-message="maxlength">The Profession must have a max of 25 letters!</div>
+	                       <div ng-message="pattern">The Profession must contain only letters and numbers</div>
+	                       <div ng-message="server" >{{dash.errEdition}}</div>
+	                    </div>
+	        	  </md-input-container>
+	               <md-input-container  class="md-block" style='width:400px' flex-gt-sm>
+	                    <label>Publication Date</label>
+	                    <input  md-autofocus class='fields' required ng-minlength='8' ng-maxlength='25' name='pdate' ng-model="dash.pdate">
+	                    <div class="validation-messages"  ng-messages="dash.register.pdate.$error">
+	                       <div ng-message="required">The Username is required!</div>
+	                        <div ng-message="minlength">The Username must at least involve 8 letters!</div>
+	                       <div ng-message="maxlength">The Username must have a max of 25 letters!</div>
+	                       <div ng-message="pattern">The Username must contain only letters and numbers</div>
+	                       <div ng-message="server" >{{dash.userr}}</div>
+	                    </div>
+	                 </md-input-container>
+	      	  </div>
+
+         	   <div layout='row'>
+                  <md-input-container  class="md-block" style='padding-right:10% ;width:400px' flex-gt-sm>
+                    <label>Link</label>
+                    <input  md-autofocus   ng-model="dash.link">
+                 </md-input-container>
+                  <md-button style='max-height: 7%; width: 25%;' ng-click='dash.import()' class="w3-teal w3-hover-green">	Import
+		        </md-button>
+                </div>
+             <div>
+				
+		        <md-button style='width: 60%; margin-left: 20%;'  ng-click='dash.validate()' class="w3-blue w3-hover-indigo">	Register
+		        </md-button>
+			 </div>
+          </div>
+          <div class='importView' style='display:none;'>
+          		<div style="margin-bottom: 40px; margin-left: 40px">
+				    <span style='color:#0a518a; font-size: 25px; padding-top: 4%; padding-bottom: 5%; display: block;'>Upload queue</span>
+				    <p>Queue length: {{ uploader.queue.length }}</p>
+					<table class="table">
+				            <thead>
+				                <tr>
+				                    <th width="10%">Name</th>
+				                    <th >Size</th>
+				                    <th >Progress</th>
+				                    <th>Status</th>
+				                    <th>Actions</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <tr ng-repeat="item in uploader.queue">
+				                    <td style='width: 20%; word-break: break-word;'><strong  style='font-size: 14px'>{{ item.file.name }}</strong></td>
+				                    <td style='padding-right: 10%;' ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+				                    <td  ng-show="uploader.isHTML5">
+				                        <div class="progress" style="margin-bottom: 0;">
+				                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+				                        </div>
+				                    </td>
+				                    <td   class="text-center">
+				                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+				                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+				                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+				                    </td>
+				                    <td   nowrap>
+				                        <button type="button" class="btn btn-success btn-xs w3-blue" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+				                            <span class="glyphicon glyphicon-upload"></span> Upload
+				                        </button>
+				                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+				                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+				                        </button>
+				                        <button type="button" class="w3-red btn btn-danger btn-xs" ng-click="item.remove()">
+				                            <span class="glyphicon glyphicon-trash"></span> Remove
+				                        </button>
+				                    </td>
+				                </tr>
+				            </tbody>
+				        </table>
+				        <div>
+				            <div>
+				                Queue progress:
+				                <div class="progress" style="">
+				                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+				                </div>
+				            </div>
+				            <button type="button" class="btn btn-success btn-s w3-blue" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+				                <span class="glyphicon glyphicon-upload"></span> Upload all
+				            </button>
+				            <button type="button" class="btn btn-warning btn-s " ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+				                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+				            </button>
+				            <button type="button" class="btn btn-danger btn-s w3-red" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+				                <span class="glyphicon glyphicon-trash"></span> Remove all
+				            </button>
+				        </div>
+				    </div>
+				   <div>
+				   		<md-button style='margin-left: 53%; position: absolute; margin-top: -4%;' ng-click='dash.cancelUpload()' class="md-raised md-accent md-hue-2">Cancel Upload</md-button>
+				   </div>
+          </div>
+       
+	</div>
+	
+</div>

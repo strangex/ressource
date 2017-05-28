@@ -1,0 +1,23 @@
+<div ng-form='email' layout='column' >
+                  <md-input-container  id='usrContainer' class="md-block" style='width:400px' flex-gt-sm>
+                            <label>Email</label>
+                            <input  md-autofocus class='fields' required ng-minlength='8' email ng-maxlength='25' name='email' ng-model="home.email">
+                            <div class="validation-messages"  ng-messages="email.email.$error">
+                               <div ng-message="required">The Email is required!</div>
+                                <div ng-message="minlength">The Email must at least involve 8 letters!</div>
+                               <div ng-message="maxlength">The Email must have a max of 25 letters!</div>
+                               <div ng-message="email">The Email must contain only letters and numbers</div>
+                               <div ng-message="server" >{{home.errorEmail}}</div>
+                            </div>
+                  </md-input-container>
+                  <div layout='row'>
+                        <div >
+                          <md-button ng-click='home.cancelE()' class="w3-pink w3-hover-red">Cancel
+                          </md-button>
+                        </div>
+                        <div style='margin-left: 30%;'>
+                          <md-button style='width: 150px;' ng-click='home.emailMe()' class="w3-blue w3-hover-blue-grey">Email Me
+                          </md-button>
+                        </div>
+                  </div>
+</div>
